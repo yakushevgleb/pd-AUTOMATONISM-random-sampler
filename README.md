@@ -9,5 +9,6 @@ Based on [AUTOMATONISM](https://www.automatonism.com/ "AUTOMATONISM") and almost
 4. Copy [o]<--RANDOM-SAMPLER button to automatonism modules
 5. Save main.pd
 6. Create **random_sampler** folder in the automatonism root. Create any folders you like and with any amount of samples
+7. Move automatonism folder to the root of Pd folder (Documents/Pd on Mac OS)
 
 **Enjoy**
