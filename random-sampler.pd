@@ -1,7 +1,7 @@
 #N canvas 355 23 1006 789 10;
 #X declare -lib ceammc;
-#X obj 105 135 bng 15 250 50 0 \$0-randomize empty RANDOMIZE 17 7 0
-10 -262144 -1 -1;
+#X obj 105 135 bng 15 250 50 0 \$0-randomize-s \$0-randomize-r RANDOMIZE
+17 7 0 10 -262144 -1 -1;
 #X obj 106 155 ui.menu @size 200 17 @receive "(null)" @send "(null)"
 @pinned 0 @presetname "ui.menu.0" @background_color 0.93 0.93 0.93
 1 @border_color 0.6 0.6 0.6 1 @label_color 0 0 0 1 @text_color 0 0
@@ -118,13 +118,13 @@ SAMPLE_RATE 65 7 0 10 -262144 -1 -1 44100 256;
 #X obj 286 323 bng 15 50 50 0 empty \$0-end-trig-r empty 17 7 0 10
 -262144 -226533 -1;
 #X obj 564 134 s \$0-bang;
-#X obj 722 92 inlet~ PITCH;
-#X obj 722 114 throw~ \$0-sampler-PITCH;
-#X obj 897 92 inlet~ LENGTH;
-#X obj 907 125 throw~ \$0-sampler-LENGTH;
-#X obj 1086 114 throw~ \$0-sample-START;
-#X obj 1086 92 inlet~ START;
-#X obj 898 147 throw~ \$0-sampler-LENGTH2;
+#X obj 932 88 inlet~ PITCH;
+#X obj 932 110 throw~ \$0-sampler-PITCH;
+#X obj 1107 88 inlet~ LENGTH;
+#X obj 1117 121 throw~ \$0-sampler-LENGTH;
+#X obj 1296 110 throw~ \$0-sample-START;
+#X obj 1296 88 inlet~ START;
+#X obj 1108 143 throw~ \$0-sampler-LENGTH2;
 #X text 361 136 Bang resets the phasor~ to 0;
 #X obj 564 112 threshold~ 0.99 0 1 0;
 #X obj 564 90 inlet~ trig;
@@ -454,13 +454,13 @@ is being reset \, then 5ms later it turns them back on.;
 -1 -1;
 #X obj 476 599 pack 0 1;
 #X obj 655 908 s \$0-end-trig-r;
-#X obj 231 108 cnv 5 5 5 empty empty LENGTH 0 0 0 8 -262144 -120682
+#X obj 247 108 cnv 5 5 5 empty empty LENGTH 0 0 0 8 -262144 -120682
 0;
-#X obj 293 108 cnv 5 5 5 empty empty START 0 0 0 8 -262144 -120682
+#X obj 292 108 cnv 5 5 5 empty empty START 0 0 0 8 -262144 -120682
 0;
 #X obj 103 108 cnv 5 5 5 empty empty TRIG 0 0 0 8 -262144 -226533 0
 ;
-#X obj 162 108 cnv 5 5 5 empty empty PITCH 0 0 0 8 -262144 -120682
+#X obj 200 108 cnv 5 5 5 empty empty PITCH 0 0 0 8 -262144 -120682
 0;
 #X obj 217 -160 r \$0-refresh-list;
 #X obj -44 -158 declare -lib ceammc;
@@ -742,7 +742,12 @@ PITCH 133 7 0 10 -158136 -1 -1 100 1;
 #X obj 183 134 bng 15 250 50 0 \$0-refresh-list empty REFRESH_LIST
 17 7 0 10 -262144 -1 -1;
 #X symbolatom 106 173 30 0 0 0 - #0-sample-name -;
-#X obj -29 99 r \$0-randomize;
+#X obj 140 108 cnv 5 5 5 empty empty TRIG_RAND 0 0 0 8 -262144 -226533
+0;
+#X obj 749 90 inlet~ TRIG_RAND;
+#X obj 749 121 threshold~ 0.99 0 1 0;
+#X obj -29 99 r \$0-randomize-s;
+#X obj 749 143 s \$0-randomize-r;
 #X connect 1 0 126 0;
 #X connect 2 0 6 0;
 #X connect 3 0 4 0;
@@ -831,5 +836,7 @@ PITCH 133 7 0 10 -158136 -1 -1 100 1;
 #X connect 124 0 7 0;
 #X connect 125 0 8 0;
 #X connect 126 0 12 0;
-#X connect 133 0 1 0;
+#X connect 134 0 135 0;
+#X connect 135 0 137 0;
+#X connect 136 0 1 0;
 #X coords 0 -1 1 1 220 255 2 100 100;
