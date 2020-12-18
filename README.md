@@ -1,6 +1,6 @@
 # A random sampler module for AUTOMATONISM
 Based on [AUTOMATONISM](https://www.automatonism.com/ "AUTOMATONISM") and almost copy of [https://github.com/megalon/pd-AUTOMATONISM-sampler](https://github.com/megalon/pd-AUTOMATONISM-sampler)
-**IMPORTANT NOTION:** Works only on UNIX based OS
+<br/>**IMPORTANT NOTION:** Works only on UNIX based OS
 ### Steps to install
 1. Install ceammc 0.8.0 pd library through Help -> Find Externals
 2. Copy **random-sampler.pd** file to **patch_editor_abs** automatonism directory
